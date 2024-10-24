@@ -22,10 +22,6 @@ class prediction:
             data_getter=data_loader_prediction.Data_Getter_Pred(self.file_object,self.log_writer)
             data=data_getter.get_data()
 
-            #code change
-            # wafer_names=data['Wafer']
-            # data=data.drop(labels=['Wafer'],axis=1)
-
             preprocessor=preprocessing.Preprocessor(self.file_object,self.log_writer)
             is_null_present=preprocessor.is_null_present(data)
             if(is_null_present):
@@ -33,12 +29,11 @@ class prediction:
 
             cols_to_drop=preprocessor.get_columns_with_zero_std_deviation(data)
             data=preprocessor.remove_columns(data,cols_to_drop)
-            #data=data.to_numpy()
+          
             file_loader=file_methods.File_Operation(self.file_object,self.log_writer)
             kmeans=file_loader.load_model('KMeans')
 
-            ##Code changed
-            #pred_data = data.drop(['Wafer'],axis=1)
+       
             clusters=kmeans.predict(data.drop(['Wafer'],axis=1))#drops the first column for cluster prediction
             data['clusters']=clusters
             clusters=data['clusters'].unique()

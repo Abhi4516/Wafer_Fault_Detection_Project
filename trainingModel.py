@@ -1,5 +1,4 @@
 
-# Doing the necessary imports
 from sklearn.model_selection import train_test_split
 from data_ingestion import data_loader
 from data_preprocessing import preprocessing
@@ -8,7 +7,7 @@ from best_model_finder import tuner
 from file_operations import file_methods
 from application_logging import logger
 
-#Creating the common Logging object
+
 
 
 class trainModel:
@@ -29,7 +28,7 @@ class trainModel:
             """doing the data preprocessing"""
 
             preprocessor=preprocessing.Preprocessor(self.file_object,self.log_writer)
-            data=preprocessor.remove_columns(data,['Wafer']) # remove the unnamed column as it doesn't contribute to prediction.
+            data=preprocessor.remove_columns(data,['Wafer'])
 
             # create separate features and labels
             X,Y=preprocessor.separate_label_feature(data,label_column_name='Output')
@@ -41,10 +40,7 @@ class trainModel:
             if(is_null_present):
                 X=preprocessor.impute_missing_values(X) # missing value imputation
 
-            # check further which columns do not contribute to predictions
-            # if the standard deviation for a column is zero, it means that the column has constant values
-            # and they are giving the same output both for good and bad sensors
-            # prepare the list of such columns to drop
+
             cols_to_drop=preprocessor.get_columns_with_zero_std_deviation(X)
 
             # drop the columns obtained above

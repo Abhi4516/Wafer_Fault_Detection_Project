@@ -13,9 +13,6 @@ The objective of this project is to build a classification methodology to predic
 * [Prediction Data Description](#prediction-data-description)
 * [Prediction](#prediction)
 * [Technologies Used](#technologies-used)
-* [Directory Structure](#directory-structure)
-* [Installation and Setup](#installation-and-setup)
-* [Contact](#contact)
 
 ## Architecture
 

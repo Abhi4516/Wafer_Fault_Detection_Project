@@ -1,4 +1,4 @@
-     **Wafer Fault Detection Project**
+#  **Wafer Fault Detection Project**
 
 The objective of this project is to build a classification methodology to predict the quality of wafer sensors based on the given training data. The goal is to automate fault detection in semiconductor wafers, thereby improving quality control and manufacturing efficiency.
 
